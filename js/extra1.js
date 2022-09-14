@@ -12,7 +12,6 @@ function colorStones(stones) {
       stonesOut += 1;
     }
   }
-  console.log(stonesOut);
   return stonesOut;
 }
 
