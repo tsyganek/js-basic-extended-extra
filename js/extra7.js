@@ -16,4 +16,46 @@
 
 // Якщо вбивцю не знайдено, то функція нічого не повертає.
 
-function getKiller(suspects, dead) {}
+function getKiller(suspects, dead) {
+  for (let key in suspects) {
+    let victims = 0;
+    for (let deadPerson in dead) {
+      if (suspects[key].includes(dead[deadPerson])) {
+        victims += 1;
+        if (victims === dead.length) {
+          console.log(key);
+          return key;
+        }
+      }
+    }
+  }
+}
+
+getKiller(
+  {
+    Johnny: ["David", "Kyle", "Lucas"],
+    James: ["Jacob", "Bill", "Lucas"],
+    Peter: ["Lucy", "Kyle"],
+  },
+  ["Lucas", "Bill"]
+);
+
+getKiller(
+  {
+    Tim: ["Bart", "Laura", "Helen"],
+    Bob: ["Edward", "Mike", "Helen"],
+    Margaret: ["Amy", "Laura"],
+  },
+  ["Helen", "Mike"]
+);
+
+getKiller({ Brad: [], Megan: ["Ben", "Kevin"], Finn: [] }, ["Ben"]);
+
+getKiller(
+  {
+    Brad: ["Sarah"],
+    Megan: ["Ben", "Kevin"],
+    Finn: ["James"],
+  },
+  ["Alice"]
+);
