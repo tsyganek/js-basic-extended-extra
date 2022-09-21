@@ -9,7 +9,23 @@
 // [10, 20, 30, 40, 50, 60] - всі шкарпетки різних кольорів - 0 пар.
 // [10, 20, 30, 10, 20, 60] - 2 пари. Одна кольору 10 і одна кольору 20.
 
-function countMatchingSocks(colors) {}
+function countMatchingSocks(colors) {
+  let result = 0;
+  let colorPiles = {};
+  for (let color of colors) {
+    if (!colorPiles[color]) {
+      colorPiles[color] = 1;
+    } else {
+      colorPiles[color] += 1;
+    }
+  }
+
+  for (let key in colorPiles) {
+    result += Math.floor(colorPiles[key] / 2);
+  }
+  console.log(result);
+  return result;
+}
 
 countMatchingSocks([10, 10]);
 countMatchingSocks([2, 2, 2, 2, 2]);
